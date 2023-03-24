@@ -14,7 +14,7 @@ export class App {
   }
 
   routes() {
-    this.app.use("/api/users", DeployRoutes);
+    this.app.use("/api/deploy", DeployRoutes);
   }
 
   listen() {

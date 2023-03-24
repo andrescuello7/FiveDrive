@@ -1,6 +1,6 @@
 const cmd = require("node-cmd");
 
-export const deployGitHub = (github: string, name: string) => {
+export const deployGitHub = async (github: string, name: string) => {
   const runScript = `
   cd /Users/conteo/Documents/FiveDrive &&
   git clone ${github} &&
@@ -8,5 +8,7 @@ export const deployGitHub = (github: string, name: string) => {
   npm install &&
   pm2 start npm --name ${name} -- start`;
 
-  cmd.runSync(runScript);
+  const response = cmd.runSync(runScript);
+
+  return response ? "Exito manos arriba" : "Error running"
 };
