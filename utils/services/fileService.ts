@@ -1,8 +1,8 @@
 import fs from "fs";
 import readline from "readline";
-import { MongoModels } from "../models/origin/mongo_model_service";
-import { MySqlModels } from "../models/origin/mysql_model_service";
-import { PrismaModels } from "../models/prisma/prisma_model_service";
+import { MongoModels } from "../models/origin/mongoModelService";
+import { MySqlModels } from "../models/origin/mysqlModelService";
+import { PrismaModels } from "../models/prisma/prismaModelService";
 
 const input = readline.createInterface({
   input: process.stdin,
@@ -39,18 +39,18 @@ const createModel = (file: string, model: any) => {
   fs.mkdir(`./src/${file}/`, async () => {
     if (model == mongoModels) {
       fs.writeFile(
-        `./src/${file}/${file}_model.ts`,
+        `./src/${file}/${file}Model.ts`,
         await model.model(file),
         () => {}
       );
     }
     fs.writeFile(
-      `./src/${file}/${file}_router.ts`,
+      `./src/${file}/${file}Router.ts`,
       await model.route(file),
       () => {}
     );
     fs.writeFile(
-      `./src/${file}/${file}_controller.ts`,
+      `./src/${file}/${file}Controller.ts`,
       await model.controller(file),
       () => {
         process.exit(0);

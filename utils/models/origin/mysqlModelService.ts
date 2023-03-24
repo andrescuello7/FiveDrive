@@ -1,7 +1,7 @@
 export class MySqlModels {
   async route(file: string) {
     let fullname = file[0].toUpperCase() + file.slice(1);
-    return await `import { ${file}Controller } from './${file}_controller';
+    return await `import { ${file}Controller } from './${file}Controller';
         import { Router } from 'express';
         
         const router: Router = Router();

@@ -2,7 +2,7 @@ export class PrismaModels {
   async route(file: string) {
     let fullName = file[0].toUpperCase() + file.slice(1);
     return await `import { Router } from "express";
-        import { post${fullName}, get${fullName}, put${fullName}, delete${fullName} } from "./${file}_controller";
+        import { post${fullName}, get${fullName}, put${fullName}, delete${fullName} } from "./${file}Controller";
 
         const router: Router = Router();
 

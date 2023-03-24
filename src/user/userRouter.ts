@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { postUser, getUser, putUser, deleteUser } from "./user_controller";
+import { postUser, getUser, putUser, deleteUser } from "./userController";
 
 const router: Router = Router();
 

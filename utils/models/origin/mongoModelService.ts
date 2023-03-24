@@ -1,6 +1,6 @@
 export class MongoModels {
   async route(file: string) {
-    return await `import { ${file}Controller } from './${file}_controller';
+    return await `import { ${file}Controller } from './${file}Controller';
         import { Router } from 'express';
         
         const router: Router = Router();

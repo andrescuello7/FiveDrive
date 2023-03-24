@@ -1,5 +1,5 @@
 import express from "express";
-import UsersRoutes from "./user/user_router";
+import UsersRoutes from "./user/userRouter";
 import bodyParser from "body-parser";
 
 export class App {

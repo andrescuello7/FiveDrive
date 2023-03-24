@@ -8,7 +8,7 @@
   "scripts": {
     "start": "ts-node ./public/main.js",
     "dev": "nodemon ./main.ts",
-    "file": "ts-node ./utils/services/file_service.ts"
+    "file": "ts-node ./utils/services/fileService.ts"
   },
   "dependencies": {
     "@prisma/client": "^4.11.0",
