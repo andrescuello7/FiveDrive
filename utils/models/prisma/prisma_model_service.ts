@@ -1,8 +1,7 @@
 export class PrismaModels {
-    async route(file: string) {
-        let fullName = file[0].toUpperCase() + file.slice(1);
-        return await
-        `import { Router } from "express";
+  async route(file: string) {
+    let fullName = file[0].toUpperCase() + file.slice(1);
+    return await `import { Router } from "express";
         import { post${fullName}, get${fullName}, put${fullName}, delete${fullName} } from "./${file}_controller";
 
         const router: Router = Router();
@@ -12,13 +11,12 @@ export class PrismaModels {
         router.put("/:id", put${fullName});
         router.delete("/:id", delete${fullName});
 
-        export default router;`
-    }
+        export default router;`;
+  }
 
-    async controller(file: string) {
-        let fullName = file[0].toUpperCase() + file.slice(1);
-        return await
-            `import prisma from "../../lib/config/prisma";
+  async controller(file: string) {
+    let fullName = file[0].toUpperCase() + file.slice(1);
+    return await `import prisma from "../../lib/config/prisma";
             import { Request, Response } from "express";
             
             export async function get${fullName}(req: Request, res: Response) {
@@ -63,6 +61,6 @@ export class PrismaModels {
               } catch (error: any) {
                 res.status(400).send({ error: "error DELETE" });
               }
-            }`
-    }
+            }`;
+  }
 }

@@ -1,24 +1,28 @@
 export class MongoModels {
-    async route(file: string) {
-        return await
-            `import { ${file}Controller } from './${file}_controller';
+  async route(file: string) {
+    return await `import { ${file}Controller } from './${file}_controller';
         import { Router } from 'express';
         
         const router: Router = Router();
         const controller = new ${file}Controller();
         
         router.get('/', controller.get${file[0].toUpperCase() + file.slice(1)});
-        router.post('/', controller.post${file[0].toUpperCase() + file.slice(1)});
-        router.put('/:id', controller.put${file[0].toUpperCase() + file.slice(1)});
-        router.delete('/:id', controller.delete${file[0].toUpperCase() + file.slice(1)});
+        router.post('/', controller.post${
+          file[0].toUpperCase() + file.slice(1)
+        });
+        router.put('/:id', controller.put${
+          file[0].toUpperCase() + file.slice(1)
+        });
+        router.delete('/:id', controller.delete${
+          file[0].toUpperCase() + file.slice(1)
+        });
         
-        export default router;`
-    }
+        export default router;`;
+  }
 
-    async controller(file: string) {
-        let fullName = file[0].toUpperCase() + file.slice(1);
-        return await
-            `import ${file}Model from "./${file}_model";
+  async controller(file: string) {
+    let fullName = file[0].toUpperCase() + file.slice(1);
+    return await `import ${file}Model from "./${file}_model";
             import { Request, Response } from 'express';
             
             export class ${file}Controller {
@@ -67,12 +71,11 @@ export class MongoModels {
                         res.status(400).send("error in method delete");
                     }
                 }
-            }`
-    }
+            }`;
+  }
 
-    async model(file: string) {
-        return await
-            `import { Schema, model } from 'mongoose';
+  async model(file: string) {
+    return await `import { Schema, model } from 'mongoose';
 
         const ${file}Model = new Schema({
             title: {
@@ -86,6 +89,6 @@ export class MongoModels {
             }
         })
 
-        export default model('${file}Model', ${file}Model);`
-    }
+        export default model('${file}Model', ${file}Model);`;
+  }
 }

@@ -1,8 +1,7 @@
 export class MySqlModels {
-    async route(file: string) {
-        let fullname = file[0].toUpperCase() + file.slice(1);
-        return await
-            `import { ${file}Controller } from './${file}_controller';
+  async route(file: string) {
+    let fullname = file[0].toUpperCase() + file.slice(1);
+    return await `import { ${file}Controller } from './${file}_controller';
         import { Router } from 'express';
         
         const router: Router = Router();
@@ -13,13 +12,12 @@ export class MySqlModels {
         router.put('/:id', controller.put${fullname});
         router.delete('/:id', controller.delete${fullname});
         
-        export default router;`
-    }
+        export default router;`;
+  }
 
-    async controller(file: string) {
-        let fullname = file[0].toUpperCase() + file.slice(1);
-        return await
-            `import { Request, Response } from "express";
+  async controller(file: string) {
+    let fullname = file[0].toUpperCase() + file.slice(1);
+    return await `import { Request, Response } from "express";
             import { connectMysql } from "../../utils/database/mysql/mysql_db";
             
             export class ${file}Controller {
@@ -68,6 +66,6 @@ export class MySqlModels {
                         res.status(400).send("error in method delete");
                     }
                 }
-            }`
-    }
+            }`;
+  }
 }
