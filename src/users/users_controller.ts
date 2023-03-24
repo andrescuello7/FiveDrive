@@ -1,33 +1,49 @@
 import prisma from "../../lib/config/prisma";
 import { Request, Response } from "express";
 
-interface IUserMethod {
-  email: string;
-  password: string;
-}
-
 export async function getUsers(req: Request, res: Response) {
   try {
-    const users = await prisma.user.findMany();
-    res.send({ users });
+    const response = await prisma.user.findMany();
+    res.status(200).send({ user: response });
   } catch (error: any) {
-    return { error };
+    res.status(400).send({ error: "error GET" });
   }
 }
 
-export async function createUsers({ email, password }: IUserMethod) {
+export async function postUser(req: Request, res: Response) {
   try {
-    // const user = await prisma.user.create({
-    //   data: {
-    //     email,
-    //     password,
-    //   },
-    // });
-    // if (!user) {
-    //   throw new Error("Error creating user");
-    // }
-    return { user: "Hola POST" };
+    const response = await prisma.user.create({
+      data: {
+        email: req.body.email,
+        password: req.body.password
+      },
+    });
+    res.status(200).send({ user: response });
   } catch (error: any) {
-    return { error };
+    res.status(400).send({ error: "error POST" });
+  }
+}
+export async function putUser(req: Request, res: Response) {
+  const { id } = req.params;
+  try {
+    const response = await prisma.user.update({
+      where: { id },
+      data: req.body,
+    });
+    res.status(200).send({ user: response });
+  } catch (error: any) {
+    res.status(400).send({ error: "error PUT" });
+  }
+}
+
+export async function deleteUser(req: Request, res: Response) {
+  const { id } = req.params;
+  try {
+    const response = await prisma.user.delete({
+      where: { id },
+    });
+    res.status(200).send({ user: response });
+  } catch (error: any) {
+    res.status(400).send({ error: "error DELETE" });
   }
 }
