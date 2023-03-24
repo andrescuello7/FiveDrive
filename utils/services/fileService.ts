@@ -13,21 +13,23 @@ const mysqlModels = new MySqlModels();
 const prismaModels = new PrismaModels();
 
 const fileService = () => {
-  console.log("Created new Model \n");
-  console.log("[1] MongoDb NameFile \n[2] MySql NameFile \n[3] Prisma NameFile  \n");
+  console.log("Add new model \n");
+  console.log(
+    "[1] Prisma NameFile \n[2] MongoDb NameFile \n[3] MySql NameFile  \n"
+  );
 
   input.on("line", (line) => {
     let file = line.slice(2);
     let num = line[0];
     switch (num) {
       case "1":
-        createModel(file, mongoModels);
+        createModel(file, prismaModels);
         break;
       case "2":
-        createModel(file, mysqlModels);
+        createModel(file, mongoModels);
         break;
       case "3":
-        createModel(file, prismaModels);
+        createModel(file, mysqlModels);
         break;
       default:
         process.exit(0);
