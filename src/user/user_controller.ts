@@ -1,7 +1,7 @@
 import prisma from "../../lib/config/prisma";
 import { Request, Response } from "express";
 
-export async function getUsers(req: Request, res: Response) {
+export async function getUser(req: Request, res: Response) {
   try {
     const response = await prisma.user.findMany();
     res.status(200).send({ user: response });
@@ -13,10 +13,7 @@ export async function getUsers(req: Request, res: Response) {
 export async function postUser(req: Request, res: Response) {
   try {
     const response = await prisma.user.create({
-      data: {
-        email: req.body.email,
-        password: req.body.password
-      },
+      data: req.body,
     });
     res.status(200).send({ user: response });
   } catch (error: any) {
