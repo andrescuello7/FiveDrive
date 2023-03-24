@@ -14,9 +14,11 @@ const prismaModels = new PrismaModels();
 
 const fileService = () => {
   console.log("Add new model \n");
-  console.log(
-    "[1] Prisma NameFile \n[2] MongoDb NameFile \n[3] MySql NameFile  \n"
-  );
+  console.log(`
+    [1] Prisma Name \n
+    [2] Mongo Name | Deleted \n
+    [3] MySql Name | Deleted \n
+  `);
 
   input.on("line", (line) => {
     let file = line.slice(2);
