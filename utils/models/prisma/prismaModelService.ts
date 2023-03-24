@@ -16,7 +16,7 @@ export class PrismaModels {
 
   async controller(file: string) {
     let fullName = file[0].toUpperCase() + file.slice(1);
-    return await `import prisma from "../../lib/config/prisma";
+    return await `import prisma from "../../config/prisma";
             import { Request, Response } from "express";
             
             export async function get${fullName}(req: Request, res: Response) {

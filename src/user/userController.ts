@@ -1,4 +1,4 @@
-import prisma from "../../lib/config/prisma";
+import prisma from "../../config/prisma";
 import { Request, Response } from "express";
 
 export async function getUser(req: Request, res: Response) {
