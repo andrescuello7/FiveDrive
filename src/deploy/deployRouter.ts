@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { postDeploy } from "./deployController";
+import { postDeploy, getDeploy } from "./deployController";
 
 const router: Router = Router();
 
+router.get("/", getDeploy);
 router.post("/", postDeploy);
 
 export default router;
