@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "start": "ts-node ./public/main.js",
+    "start": "ts-node ./dist/main.js",
     "build": "tsc --build",
     "dev": "nodemon ./main.ts",
     "file": "ts-node ./utils/services/fileService.ts"
