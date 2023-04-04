@@ -3,13 +3,14 @@
     "target": "es6",
     "module": "commonjs",
     "sourceMap": true,
-    "outDir": "./public",             
+    "outDir": "dist",             
     "strict": true,                 
     "moduleResolution": "node",
     "baseUrl": "./",
     "esModuleInterop": true, 
   },
   "include": [
-    "src"
+    "src",
+    "scripts/**/*"
   ],
 }

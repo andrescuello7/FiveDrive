@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 
 export async function getPosts(req: Request, res: Response) {
   try {
-    const response = await prisma.posts.findMany();
+    const response = await prisma.post.findMany();
     res.status(200).send({ posts: response });
   } catch (error: any) {
     res.status(400).send({ error: "error GET" });
@@ -12,7 +12,7 @@ export async function getPosts(req: Request, res: Response) {
 
 export async function postPosts(req: Request, res: Response) {
   try {
-    const response = await prisma.posts.create({
+    const response = await prisma.post.create({
       data: req.body,
     });
     res.status(200).send({ posts: response });
@@ -23,7 +23,7 @@ export async function postPosts(req: Request, res: Response) {
 export async function putPosts(req: Request, res: Response) {
   const { id } = req.params;
   try {
-    const response = await prisma.posts.update({
+    const response = await prisma.post.update({
       where: { id },
       data: req.body,
     });
@@ -36,7 +36,7 @@ export async function putPosts(req: Request, res: Response) {
 export async function deletePosts(req: Request, res: Response) {
   const { id } = req.params;
   try {
-    const response = await prisma.posts.delete({
+    const response = await prisma.post.delete({
       where: { id },
     });
     res.status(200).send({ posts: response });
