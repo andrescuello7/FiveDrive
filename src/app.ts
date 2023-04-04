@@ -1,5 +1,6 @@
 import express from "express";
-import DeployRoutes from "./deploy/deployRouter";
+import UsersRouter from "./users/usersRouter";
+import PostsRouter from "./posts/postsRouter";
 import bodyParser from "body-parser";
 
 export class App {
@@ -14,7 +15,8 @@ export class App {
   }
 
   routes() {
-    this.app.use("/api/deploy", DeployRoutes);
+    this.app.use("/api/users", UsersRouter);
+    this.app.use("/api/posts", PostsRouter);
   }
 
   listen() {
